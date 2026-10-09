@@ -1,0 +1,39 @@
+[project]
+name = "vira-gtm"
+version = "0.1.0"
+description = "GTM engineering pipeline for VIRA Home: find, enrich, score, and reach B2B buyers of Indian home textiles."
+authors = [{ name = "Divya Garg" }]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pandas>=3.0.6",
+    "python-dotenv>=1.2.4",
+    "rapidfuzz>=3.14.6",
+    "typer>=0.27.3",
+]
+
+[project.scripts]
+vira = "vira_gtm.cli:app"
+
+[build-system]
+requires = ["uv_build>=0.11.32,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.16.10",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+# E/F: pycodestyle + pyflakes, I: import order, B: bugbear, UP: modern syntax,
+# SIM: simplifications, RUF: ruff-specific checks.
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
